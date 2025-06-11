@@ -1,0 +1,45 @@
+.team-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.team-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    padding: 5rem 0rem 10rem 0rem;
+}
+
+.team-section-title {
+    color: #c01f13;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.team-section-container {
+    display: flex;
+    gap: 128px;
+}
+
+.team-section-img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+}
+
+.team-section-img {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.team-section-img:hover {
+    opacity: 0.5;
+}
+
+.team-section-name {
+    color: #c01f13;
+    font-size: 32px;
+    font-weight: 600;
+}

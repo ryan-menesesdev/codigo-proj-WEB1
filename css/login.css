@@ -1,0 +1,98 @@
+body {
+    background-color: #f8dcd9;
+}
+
+.login-main-container {
+    padding-top: 1rem;
+}
+
+.register-container {
+    padding-right: 1rem;
+}
+
+.login-section { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 0;
+    gap: 32px;
+}
+
+.login-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 3rem 0;
+}
+
+.login-img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-img { 
+    width: 35%;
+}
+
+.login-title {
+    font-size: 32px;
+    color: #c01f13;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.form-container {
+    width: 35%;
+    padding: 2.5rem;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+}
+
+.login-label {
+    font-size: 18px;
+}
+
+.login-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px
+}
+
+.login-input {
+    padding: 1rem 1.5rem;
+    border: none;
+    font-size: 18px;
+    border-radius: 8px;
+    opacity: 0.7;
+}
+
+.login-button {
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    background-color: #c01f13;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.login-button:hover {
+    background-color: #83160e;
+}
+
+#login-button {
+    width: 100%;
+}
