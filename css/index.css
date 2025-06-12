@@ -14,14 +14,11 @@
     text-decoration-line: underline;
 }
 
-.index-section { 
-    width: 90%;
-}
-
 .index-section {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 90%;
 }
 
 .index-section-img {
