@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/item-display.css"> 
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/header.css">
-    <title>Equipe</title>
+    <title>Detalhes</title>
 </head>
 <body>
     <header>
@@ -25,7 +25,7 @@
                 <div class="header-cart-container">
                     <a href="cart.html">
                         <i class="fas fa-shopping-cart header-icon"></i>
-                        <span class="header-cart-count">0</span>
+                        <span class="header-cart-count"></span>
                     </a>
                 </div>
                 <div class="header-dropdown-container">
@@ -53,18 +53,9 @@
                 </a>
             </div>
             
-            <section class="item-display-section">
-                <div class="item-display-section-img">
-                    <img class="item-display-img" src="../assets/avatar_placeholder.png">
-                </div>
-
-                <div class="item-display-section-content">
-                    <div class="item-display-section-text">
-                        <h1 class="item-display-title">Título do Alimento</h1>
-                        <p class="item-display-paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde a, porro debitis ut quam corporis magni, eaque labore ad dolorum, non at iure rem! Quasi aliquam nobis corporis doloremque quae?Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <p class="item-display-paragraph">Preço: R$10,00</p>
-                    </div>
-                    <button class="item-display-button">Adicionar ao carrinho</button>
+            <section class="item-display-section" id="product-detail-container">
+                <div class="loading-indicator">
+                    <h1>Carregando informações do produto...</h1>
                 </div>
             </section>
         </div>
