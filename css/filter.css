@@ -1,0 +1,26 @@
+.filter-container {
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 2.5rem 6rem;
+    width: 100%;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-size: 24px;
+    font-weight: 6600;
+}
+
+.filter-select {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+}

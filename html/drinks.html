@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/back.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/filter.css">
     <link rel="stylesheet" href="../css/item.css"> 
     <link rel="stylesheet" href="../css/footer.css">
     <title>Bebidas</title>
@@ -55,6 +56,17 @@
 
             <section class="item-section">
                 <h1 class="item-section-title">Bebidas</h1>
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="sort-filter">Ordenar por:</label>
+                        <select id="sort-filter" class="filter-select">
+                            <option value="padrao">Padrão</option>
+                            <option value="preco-asc">Menor Preço</option>
+                            <option value="preco-desc">Maior Preço</option>
+                            <option value="nome-asc">Nome (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="item-section-wrapper">
                     <div class="item-container" id="bebidas-produtos-grid">
                         <p>Carregando bebidas...</p>

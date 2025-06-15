@@ -46,12 +46,12 @@
 
                         <div class="register-input-container">
                             <label class="register-label" for="phone">Telefone*</label>
-                            <input type="text" class="register-input" name="phone" id="input-phone" placeholder="Insira seu telefone" required>
+                            <input type="text" class="register-input" name="phone" id="input-phone" placeholder="Apenas números (DDD + Número)" required maxlength="11" pattern="[0-9]{11}" inputmode="numeric">
                         </div>
 
                         <div class="register-input-container">
                             <label class="register-label" for="cpf">CPF*</label>
-                            <input type="text" class="register-input" name="cpf" id="input-cpf" placeholder="Insira seu CPF" required>
+                            <input type="text" class="register-input" name="cpf" id="input-cpf" placeholder="Apenas números" required maxlength="11" pattern="[0-9]{11}" inputmode="numeric">
                         </div>
 
                         <div class="register-input-container">
