@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Veja nossa seleção de bebidas na Sinhá Bolos e Lanches.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" href="../assets/logo-better-nobackground.png">
@@ -11,34 +12,34 @@
     <link rel="stylesheet" href="../css/filter.css">
     <link rel="stylesheet" href="../css/item.css"> 
     <link rel="stylesheet" href="../css/footer.css">
-    <title>Bebidas</title>
+    <title>Bebidas - Sinhá Bolos e Lanches</title>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <a href="index.html" class="header-link">
+            <a href="index.html" class="header-link" aria-label="Página Inicial de Sinhá Bolos e Lanches">
                 <div class="header-left">
-                        <img src="../assets/logo-better-nobackground.png" alt="Logo da Empresa" class="header-logo">
-                        <p class="header-logo-title">Sinhá Bolos e Lanches</p>
+                    <img src="../assets/logo-better-nobackground.png" alt="Logo da Sinhá Bolos e Lanches" class="header-logo">
+                    <span class="header-logo-title">Sinhá Bolos e Lanches</span>
                 </div>
             </a>
-            <nav class="header-right">
+            <nav class="header-right" aria-label="Navegação principal">
                 <div class="header-cart-container">
-                    <a href="cart.html">
-                        <i class="fas fa-shopping-cart header-icon"></i>
+                    <a href="cart.html" aria-label="Ver carrinho de compras">
+                        <i class="fas fa-shopping-cart header-icon" aria-hidden="true"></i>
                         <span class="header-cart-count">0</span>
                     </a>
                 </div>
                 <div class="header-dropdown-container">
-                    <p class="header-dropdown" id="menuDropdownToggle">
-                        Menu <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </p>
-                    <div class="header-dropdown-menu" id="menuDropdown">
-                        <a href="index.html">Início</a>
-                        <a href="about.html">Sobre</a>
-                        <a href="contact.html">Contato</a>
-                        <a href="team.html">Equipe</a>
-                        <a href="#" id="auth-link-dropdown">Sair</a>
+                    <button class="header-dropdown" id="menuDropdownToggle" aria-haspopup="true" aria-expanded="false" aria-controls="menuDropdown">
+                        Menu <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+                    </button>
+                    <div class="header-dropdown-menu" id="menuDropdown" role="menu">
+                        <a href="index.html" role="menuitem">Início</a>
+                        <a href="about.html" role="menuitem">Sobre</a>
+                        <a href="contact.html" role="menuitem">Contato</a>
+                        <a href="team.html" role="menuitem">Equipe</a>
+                        <a href="#" id="auth-link-dropdown" role="menuitem">Sair</a>
                     </div>
                 </div>
             </nav>
@@ -48,15 +49,16 @@
     <main>
         <div class="item-main-container">
             <div class="top-container">
-                <a class="top-link" href="index.html">
-                    <i class="fas fa-arrow-left"></i>
-                    <p>Voltar</p>
+                <a class="top-link" href="index.html" aria-label="Voltar para a página inicial">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                    <span>Voltar</span>
                 </a>
             </div>
 
-            <section class="item-section">
-                <h1 class="item-section-title">Bebidas</h1>
-                <div class="filter-container">
+            <section class="item-section" aria-labelledby="page-title">
+                <h1 class="item-section-title" id="page-title">Bebidas</h1>
+                
+                <div class="filter-container" role="search" aria-label="Filtros de produtos">
                     <div class="filter-group">
                         <label for="sort-filter">Ordenar por:</label>
                         <select id="sort-filter" class="filter-select">
@@ -67,10 +69,11 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="item-section-wrapper">
-                    <div class="item-container" id="bebidas-produtos-grid">
-                        <p>Carregando bebidas...</p>
-                    </div>
+                    <ul class="item-container" id="bebidas-produtos-grid">
+                        <li>Carregando bebidas...</li>
+                    </ul>
                 </div>
             </section>
         </div>
@@ -80,11 +83,14 @@
         <div class="footer-container">
             <p class="footer-text">©2025 Sinhá Bolos e Lanches. Todos os direitos reservados.</p>
             <p class="footer-text">Horário de funcionamento: 10h - 18h</p>
-            <p class="footer-text">
-                <a class="footer-link" href="index.html">Início</a> | 
-                <a class="footer-link" href="about.html">Sobre</a> | 
-                <a class="footer-link" href="contact.html">Contato</a> | 
-                <a class="footer-link" href="team.html">Equipe</a></p>
+            <nav aria-label="Navegação do rodapé">
+                <p class="footer-text">
+                    <a class="footer-link" href="index.html">Início</a> | 
+                    <a class="footer-link" href="about.html">Sobre</a> | 
+                    <a class="footer-link" href="contact.html">Contato</a> | 
+                    <a class="footer-link" href="team.html">Equipe</a>
+                </p>
+            </nav>
         </div>
     </footer>
 

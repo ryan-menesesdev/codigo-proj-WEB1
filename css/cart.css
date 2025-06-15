@@ -111,6 +111,17 @@
     justify-content: space-between;
 }
 
+.cart-section-select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.cart-section-select-label {
+    font-size: 24px;
+    font-weight: 600;
+}
+
 .cart-section-select {
     border: none;
     padding: 1rem;

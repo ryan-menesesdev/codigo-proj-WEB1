@@ -213,7 +213,7 @@ async function renderizarItensDoCarrinho(containerId) {
                 </div>
                 <div class="cart-section-quantity-container">
                     <button class="cart-section-button decrease-qty" data-id="${productId}"><i class="fas fa-minus"></i></button>
-                    <p class="cart-section-quantity">Quantidade: ${item.quantidade}</p>
+                    <p class="cart-section-quantity">${item.quantidade}</p>
                     <button class="cart-section-button increase-qty" data-id="${productId}"><i class="fas fa-plus"></i></button>
                 </div>
                 <div class="cart-section-price-container">
