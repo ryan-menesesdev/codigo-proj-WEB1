@@ -34,6 +34,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-shrink: 0;
 }
 
 .cart-section-img {
@@ -42,13 +43,22 @@
 
 .cart-section-name {
     color: #c01f13;
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
 .cart-section-quantity-container {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.cart-section-quantity,
+.cart-section-price {
+    font-size: 20px;  
+    font-weight: 700;  
+    color: #333333; 
 }
 
 .cart-section-button {
