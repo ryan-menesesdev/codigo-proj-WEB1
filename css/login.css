@@ -2,10 +2,6 @@ body {
     background-color: #f8dcd9;
 }
 
-.login-main-container {
-    padding-top: 1rem;
-}
-
 .register-container {
     padding-right: 1rem;
 }
@@ -84,7 +80,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }

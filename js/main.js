@@ -341,6 +341,21 @@ onAuthStateChanged(auth, (user) => {
             cartCounter.textContent = '0';
             cartCounter.style.display = 'none';
         }
+        if (window.location.pathname.includes('cart.html')) {
+            const cartContainer = document.getElementById('cart-items-list');
+            const totalPriceEl = document.getElementById('cart-total-price');
+            const paymentSection = document.querySelector('.cart-section-payment');
+
+            if (cartContainer) {
+                cartContainer.innerHTML = '<p>Seu carrinho está vazio. <a href="login.html" style="color: #c01f13; text-decoration: underline;">Faça login</a> para adicionar itens.</p>';
+            }
+            if (totalPriceEl) {
+                totalPriceEl.textContent = 'Total: R$ 0,00';
+            }
+            if(paymentSection){
+                paymentSection.style.display = 'none';
+            }
+        }
     }
 });
 

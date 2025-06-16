@@ -15,7 +15,7 @@
 
 .payment-section-title {
     color: #c01f13;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
 }
 
@@ -25,14 +25,14 @@
     gap: 20px;
 }
 
-span {
+#next-steps-title {
     color: #c01f13;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 500;
 }
 
 .payment-section-text {
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .payment-section-list {

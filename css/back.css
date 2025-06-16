@@ -15,7 +15,7 @@ img {
 .top-container {
     display: flex;
     justify-content: space-between;
-    padding-left: 1rem;
+    padding: 1rem;
 }
 
 .top-link {
@@ -25,9 +25,9 @@ img {
     align-items: center;
     color: #000000;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 24px;
     background-color: #facfca;
-    padding: 1rem 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 8px;
     transition: background-color 0.3s ease-in-out;
 }

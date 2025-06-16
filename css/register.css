@@ -2,10 +2,6 @@ body {
     background-color: #f8dcd9;
 }
 
-.register-main-container {
-    padding: 1rem 1rem;
-}
-
 .register-section { 
     display: flex;
     justify-content: center;
@@ -79,7 +75,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }

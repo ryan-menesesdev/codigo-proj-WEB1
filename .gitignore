@@ -3,3 +3,6 @@ package.json
 node_modules
 
 firebaseConfig.js
+
+serviceAccountKey.json
+exportar-json.js

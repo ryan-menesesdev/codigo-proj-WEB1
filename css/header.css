@@ -83,9 +83,9 @@
     background-color: transparent;
     border: none;
     color: #c01f13;
-    font-size: 22px;
+    font-size: 24px;
     cursor: pointer;
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.5rem;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -127,6 +127,7 @@
     text-decoration: none;
     display: block;
     text-align: left;
+    font-size: 18px;
     transition: background-color 0.2s ease;
 }
 
