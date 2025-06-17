@@ -19,7 +19,7 @@ let cartListenerUnsubscribe = null;
 let todosOsProdutosDaPagina = [];
 let containerIdAtual = '';
 
-async function adicionarAoCarrinho(productId) {
+async function addCart(productId) {
     if (!auth.currentUser) {
         alert('Você precisa estar logado para adicionar itens ao carrinho.');
         window.location.href = 'login.html';
@@ -117,7 +117,7 @@ async function finalizePurchase() {
     }
 }
 
-function aplicarOrdenacaoERenderizar() {
+function filterAndRender() {
     const tipoOrdenacao = document.getElementById('sort-filter').value;
     let produtosOrdenados = [...todosOsProdutosDaPagina];
     switch (tipoOrdenacao) {
@@ -131,10 +131,10 @@ function aplicarOrdenacaoERenderizar() {
             produtosOrdenados.sort((a, b) => a.nome.localeCompare(b.nome));
             break;
     }
-    renderizarProdutos(produtosOrdenados, containerIdAtual);
+    renderProducts(produtosOrdenados, containerIdAtual);
 }
 
-async function buscarProdutosPorCategoria(categoria, containerId) {
+async function searchProductByCategory(categoria, containerId) {
     containerIdAtual = containerId;
     try {
         const q = query(collection(db, 'produtos'), where('categoria', '==', categoria));
@@ -143,13 +143,13 @@ async function buscarProdutosPorCategoria(categoria, containerId) {
         querySnapshot.forEach(doc => {
             todosOsProdutosDaPagina.push({ id: doc.id, ...doc.data() });
         });
-        aplicarOrdenacaoERenderizar();
+        filterAndRender();
     } catch (error) {
         console.error(`Erro ao buscar produtos: `, error);
     }
 }
 
-function renderizarProdutos(produtos, containerId) {
+function renderProducts(produtos, containerId) {
     const gridContainer = document.getElementById(containerId);
     if (!gridContainer) return;
     gridContainer.innerHTML = '';
@@ -177,12 +177,12 @@ function renderizarProdutos(produtos, containerId) {
     });
     document.querySelectorAll('.item-section-button').forEach(button => {
         button.addEventListener('click', (event) => {
-            adicionarAoCarrinho(event.target.dataset.productId);
+            addCart(event.target.dataset.productId);
         });
     });
 }
 
-async function renderizarItensDoCarrinho(containerId) {
+async function renderCartItems(containerId) {
     const container = document.getElementById(containerId);
     const totalPriceEl = document.getElementById('cart-total-price');
     if (!container) return;
@@ -233,7 +233,7 @@ async function renderizarItensDoCarrinho(containerId) {
     });
 }
 
-async function carregarDetalhesDoProduto(productId, categoryName) {
+async function loadProductInfo(productId, categoryName) {
     const container = document.getElementById('product-detail-container');
     if (!container) return;
     if (!productId) {
@@ -244,7 +244,7 @@ async function carregarDetalhesDoProduto(productId, categoryName) {
         const docRef = doc(db, 'produtos', productId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            popularPaginaDoProduto(container, docSnap.data(), productId, categoryName);
+            loadProductPage(container, docSnap.data(), productId, categoryName);
         } else {
             container.innerHTML = '<h1>Produto não encontrado.</h1>';
         }
@@ -254,7 +254,7 @@ async function carregarDetalhesDoProduto(productId, categoryName) {
     }
 }
 
-function popularPaginaDoProduto(container, productData, productId, categoryName) {
+function loadProductPage(container, productData, productId, categoryName) {
     container.innerHTML = '';
     const categoryLinks = { "Bolos": "cakes.html", "Bebidas": "drinks.html", "Salgados": "snacks.html", "Sobremesas": "desserts.html" };
     const backLink = document.querySelector('.top-link');
@@ -289,7 +289,7 @@ function popularPaginaDoProduto(container, productData, productId, categoryName)
     addButton.className = 'item-display-button';
     addButton.textContent = 'Adicionar ao carrinho';
     addButton.addEventListener('click', () => {
-        adicionarAoCarrinho(productId);
+        addCart(productId);
     });
     contentContainer.appendChild(textContainer);
     contentContainer.appendChild(addButton);
@@ -300,7 +300,7 @@ function popularPaginaDoProduto(container, productData, productId, categoryName)
 function setupSortEventListener() {
     const sortSelect = document.getElementById('sort-filter');
     if (sortSelect) {
-        sortSelect.addEventListener('change', aplicarOrdenacaoERenderizar);
+        sortSelect.addEventListener('change', filterAndRender);
     }
 }
 
@@ -325,7 +325,7 @@ onAuthStateChanged(auth, (user) => {
             }
         });
         if (window.location.pathname.includes('cart.html')) {
-            renderizarItensDoCarrinho('cart-items-list');
+            renderCartItems('cart-items-list');
         }
     } else {
         if (authLink) {
@@ -377,13 +377,13 @@ if (registerFormEl) {
     const phoneInput = document.getElementById('input-phone');
     const cpfInput = document.getElementById('input-cpf');
 
-    const formatarInputNumerico = (event) => {
+    const formatNumericalInput = (event) => {
         const input = event.target;
         input.value = input.value.replace(/\D/g, '');
     };
 
-    if(phoneInput) phoneInput.addEventListener('input', formatarInputNumerico);
-    if(cpfInput) cpfInput.addEventListener('input', formatarInputNumerico);
+    if(phoneInput) phoneInput.addEventListener('input', formatNumericalInput);
+    if(cpfInput) cpfInput.addEventListener('input', formatNumericalInput);
 
     registerFormEl.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -417,12 +417,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setupSortEventListener();
     }
 
-    if (pagePath.includes('cakes.html')) buscarProdutosPorCategoria('Bolos', 'bolos-produtos-grid');
-    else if (pagePath.includes('drinks.html')) buscarProdutosPorCategoria('Bebidas', 'bebidas-produtos-grid');
-    else if (pagePath.includes('snacks.html')) buscarProdutosPorCategoria('Salgados', 'salgados-produtos-grid');
-    else if (pagePath.includes('desserts.html')) buscarProdutosPorCategoria('Sobremesas', 'sobremesas-produtos-grid');
+    if (pagePath.includes('cakes.html')) searchProductByCategory('Bolos', 'bolos-produtos-grid');
+    else if (pagePath.includes('drinks.html')) searchProductByCategory('Bebidas', 'bebidas-produtos-grid');
+    else if (pagePath.includes('snacks.html')) searchProductByCategory('Salgados', 'salgados-produtos-grid');
+    else if (pagePath.includes('desserts.html')) searchProductByCategory('Sobremesas', 'sobremesas-produtos-grid');
     else if (pagePath.includes('item-display.html')) {
-        carregarDetalhesDoProduto(productId, categoryName);
+        loadProductInfo(productId, categoryName);
     }
     else if (pagePath.includes('cart.html')) {
         const checkoutButton = document.getElementById('checkout-button');
