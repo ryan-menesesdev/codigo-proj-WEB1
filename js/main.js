@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, setDoc, doc, getDoc, updateDoc, increment, onSnapshot, deleteDoc, serverTimestamp, addDoc, writeBatch } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getFirestore, collection, query, where, getDocs, setDoc, doc, getDoc, updateDoc, increment, onSnapshot, deleteDoc, serverTimestamp, addDoc, writeBatch, orderBy } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -16,10 +16,49 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 let cartListenerUnsubscribe = null;
-let todosOsProdutosDaPagina = [];
-let containerIdAtual = '';
+let allProductsOnPage = [];
+let currentContainerId = '';
 
-async function addCart(productId) {
+/**
+ * @param {Event} event O evento de submit do formulário.
+ */
+async function handleContactFormSubmit(event) {
+    event.preventDefault(); 
+    
+    const form = event.target;
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+
+    const name = document.getElementById('full-name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const messageData = {
+        name: name,
+        email: email,
+        message: message,
+        sentAt: serverTimestamp(),
+        read: false
+    };
+
+    try {
+        await addDoc(collection(db, 'mensagens'), messageData);
+
+        alert("Obrigado pelo seu contato! Sua mensagem foi enviada com sucesso.");
+
+        form.reset();
+
+    } catch (error) {
+        console.error("Erro ao enviar mensagem: ", error);
+        alert("Desculpe, ocorreu um erro ao enviar sua mensagem. Tente novamente.");
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Enviar mensagem';
+    }
+}
+
+async function addToCart(productId) {
     if (!auth.currentUser) {
         alert('Você precisa estar logado para adicionar itens ao carrinho.');
         window.location.href = 'login.html';
@@ -99,7 +138,7 @@ async function finalizePurchase() {
         items: items,
         totalPrice: totalPrice,
         paymentMethod: paymentMethod,
-        status: "Pendente",
+        status: "Preparando",
         createdAt: serverTimestamp()
     };
     try {
@@ -117,67 +156,72 @@ async function finalizePurchase() {
     }
 }
 
-function filterAndRender() {
-    const tipoOrdenacao = document.getElementById('sort-filter').value;
-    let produtosOrdenados = [...todosOsProdutosDaPagina];
-    switch (tipoOrdenacao) {
+function applySortAndRender() {
+    const sortFilter = document.getElementById('sort-filter');
+    if (!sortFilter) {
+        renderProducts(allProductsOnPage, currentContainerId);
+        return;
+    }
+    const sortType = sortFilter.value;
+    let sortedProducts = [...allProductsOnPage];
+    switch (sortType) {
         case 'preco-asc':
-            produtosOrdenados.sort((a, b) => a.preco - b.preco);
+            sortedProducts.sort((a, b) => a.preco - b.preco);
             break;
         case 'preco-desc':
-            produtosOrdenados.sort((a, b) => b.preco - a.preco);
+            sortedProducts.sort((a, b) => b.preco - a.preco);
             break;
         case 'nome-asc':
-            produtosOrdenados.sort((a, b) => a.nome.localeCompare(b.nome));
+            sortedProducts.sort((a, b) => a.nome.localeCompare(b.nome));
             break;
     }
-    renderProducts(produtosOrdenados, containerIdAtual);
+    renderProducts(sortedProducts, currentContainerId);
 }
 
-async function searchProductByCategory(categoria, containerId) {
-    containerIdAtual = containerId;
+async function fetchProductsByCategory(category, containerId) {
+    currentContainerId = containerId;
     try {
-        const q = query(collection(db, 'produtos'), where('categoria', '==', categoria));
+        const q = query(collection(db, 'produtos'), where('categoria', '==', category));
         const querySnapshot = await getDocs(q);
-        todosOsProdutosDaPagina = [];
+        allProductsOnPage = [];
         querySnapshot.forEach(doc => {
-            todosOsProdutosDaPagina.push({ id: doc.id, ...doc.data() });
+            allProductsOnPage.push({ id: doc.id, ...doc.data() });
         });
-        filterAndRender();
+        applySortAndRender();
     } catch (error) {
         console.error(`Erro ao buscar produtos: `, error);
     }
 }
 
-function renderProducts(produtos, containerId) {
+function renderProducts(products, containerId) {
     const gridContainer = document.getElementById(containerId);
     if (!gridContainer) return;
     gridContainer.innerHTML = '';
-    if (produtos.length === 0) {
+    if (products.length === 0) {
         gridContainer.innerHTML = '<p class="no-products-message">Nenhum produto encontrado.</p>';
         return;
     }
-    produtos.forEach(produto => {
-        const precoFormatado = produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        const imagemSrc = produto.imagem || '../assets/avatar_placeholder.png';
+    products.forEach(product => {
+        const formattedPrice = product.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        const imageSrc = product.imagem || '../assets/avatar_placeholder.png';
         const itemHtml = `
-            <div class="item-section-container">
-                <div class="item-section-img-container"><img class="item-section-img" src="${imagemSrc}" alt="${produto.nome}" draggable="false"></div>
+            <li class="item-section-container">
+                <div class="item-section-img-container"><img class="item-section-img" src="${imageSrc}" alt="${product.nome}" draggable="false"></div>
                 <div class="item-section-description">
                     <div class="item-section-info">
-                        <a class="item-section-link" href="item-display.html?id=${produto.id}&categoria=${produto.categoria}">
-                            <h2 class="item-section-name">${produto.nome}</h2>
+                        <a class="item-section-link" href="item-display.html?id=${product.id}&categoria=${product.categoria}">
+                            <h2 class="item-section-name">${product.nome}</h2>
                         </a>
-                        <p class="item-section-price">${precoFormatado}</p>
+                        <p class="item-section-price">${formattedPrice}</p>
                     </div>
-                    <div class="item-section-add"><button class="item-section-button" data-product-id="${produto.id}">Adicionar ao carrinho</button></div>
+                    <div class="item-section-add"><button class="item-section-button" data-product-id="${product.id}">Adicionar ao carrinho</button></div>
                 </div>
-            </div>`;
+            </li>`;
         gridContainer.innerHTML += itemHtml;
     });
     document.querySelectorAll('.item-section-button').forEach(button => {
         button.addEventListener('click', (event) => {
-            addCart(event.target.dataset.productId);
+            addToCart(event.target.dataset.productId);
         });
     });
 }
@@ -185,18 +229,17 @@ function renderProducts(produtos, containerId) {
 async function renderCartItems(containerId) {
     const container = document.getElementById(containerId);
     const totalPriceEl = document.getElementById('cart-total-price');
-    if (!container) return;
-    if (!auth.currentUser) {
-        container.innerHTML = "<h2>Seu carrinho</h2><p>Você precisa estar logado para ver seu carrinho. <a href='login.html'>Fazer Login</a></p>";
-        return;
-    }
+    const paymentSection = document.querySelector('.cart-section-payment');
+    if (!container || !auth.currentUser) return;
     const cartItemsRef = collection(db, 'carrinhos', auth.currentUser.uid, 'itens');
     onSnapshot(cartItemsRef, (snapshot) => {
         if (snapshot.empty) {
             container.innerHTML = "<p>Seu carrinho está vazio.</p>";
             if (totalPriceEl) totalPriceEl.textContent = "Total: R$ 0,00";
+            if (paymentSection) paymentSection.style.display = 'none';
             return;
         }
+        if (paymentSection) paymentSection.style.display = 'flex';
         container.innerHTML = '';
         let totalPrice = 0;
         snapshot.forEach(doc => {
@@ -204,23 +247,23 @@ async function renderCartItems(containerId) {
             const productId = doc.id;
             const itemTotal = item.preco * item.quantidade;
             totalPrice += itemTotal;
-            const itemDiv = document.createElement('div');
+            const itemDiv = document.createElement('li');
             itemDiv.className = 'cart-section-item';
             itemDiv.innerHTML = `
                 <div class="cart-section-img-container">
-                    <img class="cart-section-img" src="${item.imagem || '../assets/avatar_placeholder.png'}">
+                    <img class="cart-section-img" src="${item.imagem || '../assets/avatar_placeholder.png'}" alt="${item.nome}">
                     <h2 class="cart-section-name">${item.nome}</h2>
                 </div>
                 <div class="cart-section-quantity-container">
-                    <button class="cart-section-button decrease-qty" data-id="${productId}"><i class="fas fa-minus"></i></button>
-                    <p class="cart-section-quantity">${item.quantidade}</p>
-                    <button class="cart-section-button increase-qty" data-id="${productId}"><i class="fas fa-plus"></i></button>
+                    <button class="cart-section-button decrease-qty" data-id="${productId}" aria-label="Diminuir quantidade de ${item.nome}"><i class="fas fa-minus"></i></button>
+                    <p class="cart-section-quantity" aria-label="Quantidade de ${item.nome}">${item.quantidade}</p>
+                    <button class="cart-section-button increase-qty" data-id="${productId}" aria-label="Aumentar quantidade de ${item.nome}"><i class="fas fa-plus"></i></button>
                 </div>
                 <div class="cart-section-price-container">
                     <p class="cart-section-price">Preço: ${itemTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                 </div>
                 <div class="cart-section-trash-container">
-                    <button class="cart-section-button delete-item" data-id="${productId}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="cart-section-button delete-item" data-id="${productId}" aria-label="Remover ${item.nome} do carrinho"><i class="fas fa-trash-alt"></i></button>
                 </div>`;
             container.appendChild(itemDiv);
             itemDiv.querySelector('.decrease-qty').addEventListener('click', () => updateCartItemQuantity(productId, item.quantidade - 1));
@@ -228,12 +271,12 @@ async function renderCartItems(containerId) {
             itemDiv.querySelector('.delete-item').addEventListener('click', () => deleteCartItem(productId));
         });
         if (totalPriceEl) {
-            totalPriceEl.textContent = `Total: ${totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
+            totalPriceEl.textContent = `Total: ${totalPrice.toLocaleString('pt-BR', { style: 'currency', 'currency': 'BRL' })}`;
         }
     });
 }
 
-async function loadProductInfo(productId, categoryName) {
+async function loadProductDetails(productId, categoryName) {
     const container = document.getElementById('product-detail-container');
     if (!container) return;
     if (!productId) {
@@ -244,7 +287,7 @@ async function loadProductInfo(productId, categoryName) {
         const docRef = doc(db, 'produtos', productId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            loadProductPage(container, docSnap.data(), productId, categoryName);
+            populateProductPage(container, docSnap.data(), productId, categoryName);
         } else {
             container.innerHTML = '<h1>Produto não encontrado.</h1>';
         }
@@ -254,7 +297,7 @@ async function loadProductInfo(productId, categoryName) {
     }
 }
 
-function loadProductPage(container, productData, productId, categoryName) {
+function populateProductPage(container, productData, productId, categoryName) {
     container.innerHTML = '';
     const categoryLinks = { "Bolos": "cakes.html", "Bebidas": "drinks.html", "Salgados": "snacks.html", "Sobremesas": "desserts.html" };
     const backLink = document.querySelector('.top-link');
@@ -289,7 +332,7 @@ function loadProductPage(container, productData, productId, categoryName) {
     addButton.className = 'item-display-button';
     addButton.textContent = 'Adicionar ao carrinho';
     addButton.addEventListener('click', () => {
-        addCart(productId);
+        addToCart(productId);
     });
     contentContainer.appendChild(textContainer);
     contentContainer.appendChild(addButton);
@@ -297,10 +340,64 @@ function loadProductPage(container, productData, productId, categoryName) {
     container.appendChild(contentContainer);
 }
 
+async function renderMyOrders() {
+    const container = document.getElementById('orders-list-container');
+    if (!container) return;
+    if (!auth.currentUser) {
+        container.innerHTML = `<p>Você precisa estar logado para ver seus pedidos. <a href="login.html">Faça login</a>.</p>`;
+        return;
+    }
+    const userId = auth.currentUser.uid;
+    const q = query(collection(db, 'pedidos'), where("userId", "==", userId), orderBy("createdAt", "desc"));
+    try {
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.empty) {
+            container.innerHTML = '<p>Você ainda não fez nenhum pedido.</p>';
+            return;
+        }
+        container.innerHTML = '';
+        querySnapshot.forEach(doc => {
+            const pedido = doc.data();
+            const pedidoId = doc.id;
+            const dataPedido = pedido.createdAt.toDate().toLocaleDateString('pt-BR', {
+                day: '2-digit', month: 'long', year: 'numeric'
+            });
+            const card = document.createElement('article');
+            card.className = 'order-card';
+            card.setAttribute('aria-labelledby', `order-id-${pedidoId}`);
+            const itensHtml = pedido.items.map(item => `<li class="order-card-items-item">${item.nome} (x${item.quantidade})</li>`).join('');
+            const statusClass = `status--${pedido.status.toLowerCase().replace(/\s/g, '-')}`;
+            card.innerHTML = `
+                <header class="order-card-header">
+                    <h2 class="order-card-subtitle" id="order-id-${pedidoId}">Pedido: #${pedidoId.toUpperCase()}</h2>
+                    <p class="order-card-status ${statusClass}">${pedido.status}</p>
+                </header>
+                <div class="order-card-body">
+                    <div class="order-card-details">
+                        <p class="order-card-text"><strong>Data:</strong> ${dataPedido}</p>
+                        <p class="order-card-text"><strong>Valor Total:</strong> ${pedido.totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                        <p class="order-card-text"><strong>Pagamento:</strong> ${pedido.paymentMethod}</p>
+                    </div>
+                    <div class="order-card-items">
+                        <h3 class="order-card-items-subtitle">Itens do Pedido:</h3>
+                        <ul class="order-card-items-list">
+                            ${itensHtml}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Erro ao buscar pedidos:", error);
+        container.innerHTML = '<p>Ocorreu um erro ao carregar seus pedidos. Tente novamente mais tarde.</p>';
+    }
+}
+
 function setupSortEventListener() {
     const sortSelect = document.getElementById('sort-filter');
     if (sortSelect) {
-        sortSelect.addEventListener('change', filterAndRender);
+        sortSelect.addEventListener('change', applySortAndRender);
     }
 }
 
@@ -324,8 +421,11 @@ onAuthStateChanged(auth, (user) => {
                 cartCounter.style.display = totalItems > 0 ? 'inline-block' : 'none';
             }
         });
-        if (window.location.pathname.includes('cart.html')) {
+        const pagePath = window.location.pathname;
+        if (pagePath.includes('cart.html')) {
             renderCartItems('cart-items-list');
+        } else if (pagePath.includes('orders.html')) {
+            renderMyOrders();
         }
     } else {
         if (authLink) {
@@ -341,19 +441,30 @@ onAuthStateChanged(auth, (user) => {
             cartCounter.textContent = '0';
             cartCounter.style.display = 'none';
         }
-        if (window.location.pathname.includes('cart.html')) {
+        const pagePath = window.location.pathname;
+        if (pagePath.includes('cart.html')) {
             const cartContainer = document.getElementById('cart-items-list');
             const totalPriceEl = document.getElementById('cart-total-price');
             const paymentSection = document.querySelector('.cart-section-payment');
-
             if (cartContainer) {
                 cartContainer.innerHTML = '<p>Seu carrinho está vazio. <a href="login.html" style="color: #c01f13; text-decoration: underline;">Faça login</a> para adicionar itens.</p>';
             }
             if (totalPriceEl) {
                 totalPriceEl.textContent = 'Total: R$ 0,00';
             }
-            if(paymentSection){
+            if (paymentSection) {
                 paymentSection.style.display = 'none';
+            }
+        }
+        if (pagePath.includes('orders.html')) {
+            const ordersContainer = document.getElementById('orders-list-container');
+            if (ordersContainer) {
+                ordersContainer.innerHTML = `
+                    <p style="text-align: center; font-size: 18px;">
+                        Você não pode ver seus pedidos ainda! Por favor, 
+                        <a href="login.html" style="color: #c01f13; text-decoration: underline;">entre</a> 
+                        com sua conta.
+                    </p>`;
             }
         }
     }
@@ -373,18 +484,14 @@ if (loginFormEl) {
 
 const registerFormEl = document.querySelector('.register-form');
 if (registerFormEl) {
-
     const phoneInput = document.getElementById('input-phone');
     const cpfInput = document.getElementById('input-cpf');
-
-    const formatNumericalInput = (event) => {
+    const formatNumericInput = (event) => {
         const input = event.target;
         input.value = input.value.replace(/\D/g, '');
     };
-
-    if(phoneInput) phoneInput.addEventListener('input', formatNumericalInput);
-    if(cpfInput) cpfInput.addEventListener('input', formatNumericalInput);
-
+    if (phoneInput) phoneInput.addEventListener('input', formatNumericInput);
+    if (cpfInput) cpfInput.addEventListener('input', formatNumericInput);
     registerFormEl.addEventListener('submit', async (event) => {
         event.preventDefault();
         const name = document.getElementById('input-name').value;
@@ -417,12 +524,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setupSortEventListener();
     }
 
-    if (pagePath.includes('cakes.html')) searchProductByCategory('Bolos', 'bolos-produtos-grid');
-    else if (pagePath.includes('drinks.html')) searchProductByCategory('Bebidas', 'bebidas-produtos-grid');
-    else if (pagePath.includes('snacks.html')) searchProductByCategory('Salgados', 'salgados-produtos-grid');
-    else if (pagePath.includes('desserts.html')) searchProductByCategory('Sobremesas', 'sobremesas-produtos-grid');
+    if (pagePath.includes('cakes.html')) fetchProductsByCategory('Bolos', 'bolos-produtos-grid');
+    else if (pagePath.includes('drinks.html')) fetchProductsByCategory('Bebidas', 'bebidas-produtos-grid');
+    else if (pagePath.includes('snacks.html')) fetchProductsByCategory('Salgados', 'salgados-produtos-grid');
+    else if (pagePath.includes('desserts.html')) fetchProductsByCategory('Sobremesas', 'sobremesas-produtos-grid');
     else if (pagePath.includes('item-display.html')) {
-        loadProductInfo(productId, categoryName);
+        loadProductDetails(productId, categoryName);
     }
     else if (pagePath.includes('cart.html')) {
         const checkoutButton = document.getElementById('checkout-button');
@@ -432,5 +539,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     else if (pagePath.includes('payment.html')) {
         displayOrderConfirmation(orderId);
+    }
+    else if (pagePath.includes('contact.html')) {
+        const contactForm = document.querySelector('.contact-section-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', handleContactFormSubmit);
+        }
     }
 });

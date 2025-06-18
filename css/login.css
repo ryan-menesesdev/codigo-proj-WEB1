@@ -2,10 +2,6 @@ body {
     background-color: #f8dcd9;
 }
 
-.register-container {
-    padding-right: 1rem;
-}
-
 .login-section { 
     display: flex;
     justify-content: center;

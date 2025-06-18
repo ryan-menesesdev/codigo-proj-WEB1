@@ -18,15 +18,15 @@
         <div class="header-container">
             <a href="index.html" class="header-link" aria-label="Página Inicial de Sinhá Bolos e Lanches">
                 <div class="header-left">
-                    <img src="../assets/logo-better-nobackground.png" alt="Logo da Sinhá Bolos e Lanches" class="header-logo">
-                    <span class="header-logo-title">Sinhá Bolos e Lanches</span>
+                        <img src="../assets/logo-better-nobackground.png" alt="Logo da Sinhá Bolos e Lanches" class="header-logo">
+                        <span class="header-logo-title">Sinhá Bolos e Lanches</span>
                 </div>
             </a>
             <nav class="header-right" aria-label="Navegação principal">
                 <div class="header-cart-container">
                     <a href="cart.html" aria-label="Ver carrinho de compras">
                         <i class="fas fa-shopping-cart header-icon" aria-hidden="true"></i>
-                        <span class="header-cart-count">0</span>
+                        <span id="cart-counter" class="header-cart-count">0</span>
                     </a>
                 </div>
                 <div class="header-dropdown-container">
@@ -34,7 +34,8 @@
                         Menu <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
                     </button>
                     <div class="header-dropdown-menu" id="menuDropdown" role="menu">
-                        <a href="index.html" role="menuitem">Início</a>
+                        <a href="index.html" role="menuitem" aria-current="page">Início</a>
+                        <a href="orders.html" role="menuitem" aria-current="page">Meus pedidos</a>
                         <a href="about.html" role="menuitem">Sobre</a>
                         <a href="contact.html" role="menuitem">Contato</a>
                         <a href="team.html" role="menuitem">Equipe</a>

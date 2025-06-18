@@ -26,7 +26,7 @@
                 <div class="header-cart-container">
                     <a href="cart.html" aria-label="Ver carrinho de compras">
                         <i class="fas fa-shopping-cart header-icon" aria-hidden="true"></i>
-                        <span class="header-cart-count"></span>
+                        <span id="cart-counter" class="header-cart-count">0</span>
                     </a>
                 </div>
                 <div class="header-dropdown-container">
@@ -34,7 +34,8 @@
                         Menu <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
                     </button>
                     <div class="header-dropdown-menu" id="menuDropdown" role="menu">
-                        <a href="index.html" role="menuitem">Início</a>
+                        <a href="index.html" role="menuitem" aria-current="page">Início</a>
+                        <a href="orders.html" role="menuitem" aria-current="page">Meus pedidos</a>
                         <a href="about.html" role="menuitem">Sobre</a>
                         <a href="contact.html" role="menuitem">Contato</a>
                         <a href="team.html" role="menuitem">Equipe</a>
