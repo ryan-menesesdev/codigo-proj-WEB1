@@ -19,9 +19,6 @@ let cartListenerUnsubscribe = null;
 let allProductsOnPage = [];
 let currentContainerId = '';
 
-/**
- * @param {Event} event O evento de submit do formulário.
- */
 async function handleContactFormSubmit(event) {
     event.preventDefault(); 
     
