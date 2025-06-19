@@ -32,7 +32,7 @@
 }
 
 .payment-section-text {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .payment-section-list {
@@ -42,3 +42,28 @@
     list-style-type: disc
 }
 
+@media (max-width: 768px) {
+    .payment-section {
+        gap: 50px;
+        padding: 4rem 1rem;
+    }
+
+    .payment-section-title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    #next-steps-title {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .payment-section-text {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .payment-section-list {
+        padding-left: 25px;
+    }
+}

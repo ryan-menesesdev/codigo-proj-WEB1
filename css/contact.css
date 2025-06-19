@@ -116,4 +116,53 @@ textarea.contact-section-input {
     color: #c01f13;
     transition: transform 0.2s ease-in-out; 
 }
- 
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 2rem 1rem 0rem 1rem;
+    }
+
+    .contact-section-title-container {
+        padding-bottom: 2rem;
+    }
+
+    .contact-section-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .contact-section-content {
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .contact-section-img {
+        width: 50%;
+        max-width: 200px;
+    }
+
+    .contact-section-form-container {
+        width: 100%;
+        padding: 2rem 1rem;
+        border: none;
+    }
+
+    .contact-section-label,
+    .contact-section-input {
+        font-size: 16px;
+    }
+
+    .contact-section-button {
+        font-size: 20px;
+    }
+
+    .contact-section-form-icon {
+        gap: 40px;
+    }
+
+    .fa-whatsapp,
+    .fa-instagram {
+        font-size: 44px;
+    }
+}

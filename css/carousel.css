@@ -102,3 +102,37 @@
 .dot.active {
     background-color: #fff;
 }
+
+@media (max-width: 768px) {
+    .carousel-container {
+        height: 30vh;
+        max-width: 100%;
+    }
+
+    .carousel-nav-btn {
+        font-size: 18px;
+        padding: 8px;
+    }
+    
+    .carousel-nav-btn.left {
+        left: 10px;
+    }
+    
+    .carousel-nav-btn.right {
+        right: 10px;
+    }
+    
+    .carousel-control-btn {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .carousel-dots {
+        gap: 6px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+}   

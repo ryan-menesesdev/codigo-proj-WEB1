@@ -88,3 +88,36 @@ body {
 #login-button {
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    .login-section {
+        padding: 1rem 0;
+        gap: 24px;
+    }
+
+    .form-container {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .login-img {
+        width: 45%;
+    }
+
+    .login-title {
+        font-size: 28px;
+    }
+
+    .login-label {
+        font-size: 16px;
+    }
+
+    .login-input {
+        font-size: 16px;
+        padding: 0.8rem 1rem;
+    }
+
+    .login-button {
+        font-size: 16px;
+    }
+}

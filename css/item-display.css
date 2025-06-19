@@ -52,3 +52,40 @@
 .item-display-button:hover {
     background-color: #83160e;
 }
+
+@media (max-width: 768px) {
+    .item-display-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 30px;
+    }
+
+    .item-display-section-img {
+        width: 50%;
+        max-width: 400px;
+    }
+
+    .item-display-section-content {
+        padding-left: 0;
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .item-display-section-text {
+        gap: 15px;
+    }
+
+    .item-display-title {
+        font-size: 22px;
+    }
+
+    .item-display-paragraph {
+        font-size: 16px;
+    }
+
+    .item-display-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 16px;
+    }
+}

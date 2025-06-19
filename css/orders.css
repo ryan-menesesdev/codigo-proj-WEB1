@@ -34,6 +34,7 @@
     padding: 1rem 1.5rem;
     background-color: #f7f7f7;
     border-bottom: 1px solid #ddd;
+    word-break: break-all;
 }
 
 .order-card-subtitle {
@@ -88,4 +89,51 @@
 
 .order-card-items-item {
     color: #555;
+}
+
+@media (max-width: 768px) {
+    .orders-section {
+        gap: 30px;
+        padding: 2rem 1rem;
+    }
+
+    .orders-section-title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .order-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 1rem;
+    }
+
+    .order-card-subtitle {
+        font-size: 16px;
+    }
+
+    .order-card-status {
+        font-size: 13px;
+        padding: 0.25rem 0.75rem;
+    }
+
+    .order-card-body {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .order-card-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .order-card-text {
+        font-size: 15px;
+    }
+
+    .order-card-items-subtitle {
+        font-size: 15px;
+    }
 }

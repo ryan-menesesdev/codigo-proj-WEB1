@@ -43,3 +43,28 @@
     font-size: 32px;
     font-weight: 600;
 }
+
+@media (max-width: 768px) {
+    .team-section {
+        gap: 80px;
+        padding: 1rem 1rem 5rem 1rem;
+    }
+
+    .team-section-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .team-section-container {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .team-section-img-container {
+        gap: 24px;
+    }
+
+    .team-section-name {
+        font-size: 24px;
+    }
+}

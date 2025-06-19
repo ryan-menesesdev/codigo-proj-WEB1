@@ -87,3 +87,40 @@ body {
 #register-button {
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    .register-section {
+        padding: 1rem 0;
+        gap: 24px;
+    }
+
+    .form-container {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .register-img {
+        width: 45%;
+    }
+
+    .register-title {
+        font-size: 28px;
+    }
+
+    .register-form {
+        gap: 24px;
+    }
+    
+    .register-label {
+        font-size: 16px;
+    }
+
+    .register-input {
+        font-size: 16px;
+        padding: 0.8rem 1rem;
+    }
+
+    .register-button {
+        font-size: 20px;
+    }
+}

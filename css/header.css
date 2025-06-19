@@ -138,3 +138,41 @@
 .header-dropdown-menu.show {
     display: block;
 }
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .header-logo {
+        height: 60px;
+    }
+
+    .header-logo-title {
+        display: none;
+    }
+
+    .header-right {
+        gap: 1rem;
+    }
+
+    .header-icon {
+        font-size: 20px;
+        padding: 0.4rem;
+    }
+
+    .header-dropdown {
+        font-size: 18px;
+        padding: 0.5rem 1rem;
+    }
+
+    .header-cart-count {
+        top: -8px;
+        right: -8px;
+        font-size: 10px;
+        min-width: 16px;
+        padding: 0.2rem;
+    }
+}

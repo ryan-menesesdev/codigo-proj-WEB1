@@ -123,3 +123,54 @@
 .item-section-button:hover {
     background-color: #83160e;
 }
+
+@media (max-width: 768px) {
+    .item-section {
+        padding: 2rem 1rem;
+        gap: 32px;
+    }
+
+    .item-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .item-section-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .item-section-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 1rem;
+    }
+
+    .item-section-img-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .item-section-description {
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .item-section-name {
+        font-size: 22px;
+    }
+
+    .item-section-price {
+        font-size: 18px;
+    }
+
+    .item-section-add {
+        justify-content: center;
+    }
+
+    .item-section-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 16px;
+    }
+}

@@ -75,3 +75,21 @@
 .about-section-markup {
     color: #c01f13;
 }
+
+@media (max-width: 768px) {
+    .about-section {
+    padding: 0rem 1.5rem;
+    }
+
+    .about-section-title {
+        font-size: 24px;
+    }
+
+    .about-section-subtitle {
+        font-size: 18px;
+    }
+
+    .about-section-text {
+        font-size: 16px;
+    }
+}
