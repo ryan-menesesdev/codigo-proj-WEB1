@@ -7,7 +7,7 @@
 }
 
 .cart-section-title {
-    color: #c01f13;
+    color: #AC1B11;
     font-size: 48px;
     font-weight: 500;
     padding: 2rem 0rem;
@@ -26,7 +26,7 @@
     align-items: center;
     gap: 40px;
     padding: 3rem 0rem;
-    border: 1px solid #c01f13;
+    border: 1px solid #AC1B11;
     border-radius: 8px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .cart-section-name {
-    color: #c01f13;
+    color: #AC1B11;
     font-size: 24px;
     font-weight: 700;
     white-space: nowrap;
@@ -62,7 +62,7 @@
 }
 
 .cart-section-button {
-    background-color: #c01f13;  
+    background-color: #AC1B11;  
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     padding: .8rem;
@@ -89,7 +89,7 @@
 }
 
 .cart-section-button-payment {
-    background-color: #c01f13;  
+    background-color: #AC1B11;  
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     padding: 1rem;
@@ -134,12 +134,90 @@
     font-weight: 700;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    background-color: #c01f13;
+    background-color: #AC1B11;
     border-radius: 8px;
 }
 
 .cart-section-option {
     font-weight: 700;
+}
+
+/* Adicione este código ao final do seu cart.css */
+
+/* Fundo escurecido que cobre a tela inteira */
+.modal-overlay {
+    position: fixed; /* Fica fixo na tela, mesmo com rolagem */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto semitransparente */
+    display: none; /* Começa escondido */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que fique na frente de tudo */
+}
+
+/* A caixa de diálogo do modal */
+.modal-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Contêiner para os botões de ação */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Estilo geral dos botões do modal */
+.modal-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Botão de confirmação (vermelho) */
+.modal-button.confirm {
+    background-color: #AC1B11;
+    color: #ffffff;
+}
+.modal-button.confirm:hover {
+    background-color: #83160e;
+}
+
+/* Botão de cancelar (cinza) */
+.modal-button.cancel {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+}
+.modal-button.cancel:hover {
+    background-color: #e0e0e0;
 }
 
 @media (max-width: 768px) {

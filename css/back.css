@@ -34,17 +34,17 @@ img {
     gap: 10px;
     text-decoration: none;
     align-items: center;
-    color: #000000;
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 24px;
-    background-color: #facfca;
+    background-color: #90170E;
     padding: 1rem 1.5rem;
     border-radius: 8px;
     transition: background-color 0.3s ease-in-out;
 }
 
 .top-link:hover {
-    background-color: #e7c0bb;
+    background-color: #6e130c;
 }
 
 @media (max-width: 768px) {

@@ -10,7 +10,7 @@
 }
 
 .contact-section-title {
-    color: #c01f13;
+    color: #AC1B11;
     font-size: 48px;
     font-weight: 500;
 }
@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    border-left: 1px solid #c01f13;
+    border-left: 1px solid #AC1B11;
     padding: 1rem 5rem;
 }
 
@@ -68,7 +68,7 @@ textarea.contact-section-input {
 .contact-section-button {
     padding: 1rem 0rem;
     border-radius: 8px;
-    background-color: #c01f13;
+    background-color: #AC1B11;
     border: none;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
@@ -91,7 +91,7 @@ textarea.contact-section-input {
 }
 
 .contact-section-form-text {
-    color: #c01f13;
+    color: #AC1B11;
 }
 
 .contact-section-form-icon {
@@ -102,18 +102,18 @@ textarea.contact-section-input {
 
 .button {
     padding-bottom: .5rem;
-    border-bottom: 3px #c01f13 solid;
+    border-bottom: 3px #AC1B11 solid;
 }
 
 .fa-whatsapp {
     font-size: 50px; 
-    color: #c01f13; 
+    color: #AC1B11; 
     transition: transform 0.2s ease-in-out;
 }
 
 .fa-instagram {
     font-size: 50px;
-    color: #c01f13;
+    color: #AC1B11;
     transition: transform 0.2s ease-in-out; 
 }
 
