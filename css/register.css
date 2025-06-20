@@ -30,7 +30,7 @@ body {
 
 .register-title {
     font-size: 32px;
-    color: #c01f13;
+    color: #90170E;
     border-radius: 8px;
     font-weight: 700;
 }
@@ -71,7 +71,7 @@ body {
     border: none;
     border-radius: 8px;
     padding: 1rem 2rem;
-    background-color: #c01f13;
+    background-color: #90170E;
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
     font-weight: 700;
@@ -81,7 +81,7 @@ body {
 }
 
 .register-button:hover {
-    background-color: #83160e;
+    background-color: #6e130c;
 }
 
 #register-button {

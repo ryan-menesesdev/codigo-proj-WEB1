@@ -19,7 +19,7 @@
 .header-logo-title {
     font-size: 32px;
     font-weight: 700;
-    color: #c01f13;
+    color: #AC1B11;
     font-style: italic;
     transition: color 0.3s ease;
 }
@@ -52,7 +52,7 @@
 .header-icon {
     padding: 0.5rem;
     font-size: 24px;
-    color: #c01f13; 
+    color: #AC1B11; 
     transition: background-color 0.3s ease;
     border-radius: 8px;
 }
@@ -82,7 +82,7 @@
 .header-dropdown {
     background-color: transparent;
     border: none;
-    color: #c01f13;
+    color: #AC1B11;
     font-size: 24px;
     cursor: pointer;
     padding: 1rem 1.5rem;
@@ -102,7 +102,7 @@
 .dropdown-arrow {
     font-size: 18px;
     transition: transform 0.3s ease;
-    color: #c01f13;
+    color: #AC1B11;
 }
 
 .header-dropdown.active .dropdown-arrow {

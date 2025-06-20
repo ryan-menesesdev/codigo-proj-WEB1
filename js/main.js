@@ -19,6 +19,38 @@ let cartListenerUnsubscribe = null;
 let allProductsOnPage = [];
 let currentContainerId = '';
 
+function showConfirmationModal(title, message, onConfirm) {
+    const modal = document.getElementById('confirmation-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const confirmBtn = document.getElementById('modal-confirm-btn');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+
+    if (!modal) return;
+
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+
+    modal.style.display = 'flex';
+
+    const hideModal = () => {
+        modal.style.display = 'none';
+    };
+
+    confirmBtn.onclick = () => {
+        onConfirm(); 
+        hideModal();
+    };
+
+    cancelBtn.onclick = hideModal;
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            hideModal();
+        }
+    });
+}
+
 async function handleContactFormSubmit(event) {
     event.preventDefault(); 
     
@@ -265,7 +297,13 @@ async function renderCartItems(containerId) {
             container.appendChild(itemDiv);
             itemDiv.querySelector('.decrease-qty').addEventListener('click', () => updateCartItemQuantity(productId, item.quantidade - 1));
             itemDiv.querySelector('.increase-qty').addEventListener('click', () => updateCartItemQuantity(productId, item.quantidade + 1));
-            itemDiv.querySelector('.delete-item').addEventListener('click', () => deleteCartItem(productId));
+            itemDiv.querySelector('.delete-item').addEventListener('click', () => {
+                showConfirmationModal(
+                    'Confirmar Remoção',
+                    `Tem certeza que deseja remover "${item.nome}" do carrinho?`,
+                    () => deleteCartItem(productId)
+                );
+            });
         });
         if (totalPriceEl) {
             totalPriceEl.textContent = `Total: ${totalPrice.toLocaleString('pt-BR', { style: 'currency', 'currency': 'BRL' })}`;
@@ -489,6 +527,7 @@ if (registerFormEl) {
     };
     if (phoneInput) phoneInput.addEventListener('input', formatNumericInput);
     if (cpfInput) cpfInput.addEventListener('input', formatNumericInput);
+
     registerFormEl.addEventListener('submit', async (event) => {
         event.preventDefault();
         const name = document.getElementById('input-name').value;
@@ -497,7 +536,36 @@ if (registerFormEl) {
         const cpf = document.getElementById('input-cpf').value;
         const password = document.getElementById('input-password').value;
         const confirmPassword = document.getElementById('input-confirm-password').value;
-        if (password !== confirmPassword) { alert('As senhas não coincidem!'); return; }
+
+        if (password !== confirmPassword) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+
+        if (password.length < 8) {
+            alert('A senha deve ter no mínimo 8 caracteres.');
+            return;
+        }
+        const allowedDomains = [
+            'gmail.com', 
+            'outlook.com', 
+            'outlook.com.br',
+            'hotmail.com',
+            'yahoo.com', 
+            'yahoo.com.br', 
+            'icloud.com',
+            'uol.com.br', 
+            'bol.com.br', 
+            'terra.com.br'
+        ];
+        const emailDomain = email.substring(email.lastIndexOf('@') + 1).toLowerCase();
+        const isDomainAllowed = allowedDomains.some(domain => emailDomain.includes(domain));
+
+        if (!isDomainAllowed) {
+            alert('Por favor, use um e-mail de domínio público válido (ex: gmail.com, outlook.com).');
+            return;
+        }
+        
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
@@ -531,7 +599,18 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (pagePath.includes('cart.html')) {
         const checkoutButton = document.getElementById('checkout-button');
         if (checkoutButton) {
-            checkoutButton.addEventListener('click', finalizePurchase);
+            checkoutButton.addEventListener('click', () => {
+                const paymentMethodEl = document.getElementById('payment-method');
+                if (!paymentMethodEl || !paymentMethodEl.value) {
+                    alert('Por favor, selecione uma forma de pagamento.');
+                    return;
+                }
+                showConfirmationModal(
+                    'Finalizar Pedido',
+                    'Tem certeza que deseja confirmar e finalizar seu pedido?',
+                    finalizePurchase 
+                );
+            });
         }
     }
     else if (pagePath.includes('payment.html')) {

@@ -18,7 +18,7 @@
 }
 
 .about-section-title {
-    color: #c01f13;
+    color: #AC1B11;
     font-size: 32px;
     font-weight: 700;
     font-style: italic;
@@ -36,7 +36,7 @@
 .about-section-subtitle {
     font-size: 24px;
     font-weight: 500;
-    color: #c01f13;
+    color: #AC1B11;
     gap: 8px;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .about-section-link {
-    color: #c01f13;
+    color: #AC1B11;
 }
 
 .about-section-link:active {
@@ -73,7 +73,7 @@
 }
 
 .about-section-markup {
-    color: #c01f13;
+    color: #AC1B11;
 }
 
 @media (max-width: 768px) {
