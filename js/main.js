@@ -107,6 +107,7 @@ async function addToCart(productId) {
                 await setDoc(cartItemRef, {
                     nome: productData.nome,
                     preco: productData.preco,
+                    imagem: productData.imagem,
                     quantidade: 1
                 });
             }

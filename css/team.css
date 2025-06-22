@@ -20,14 +20,22 @@
 
 .team-section-container {
     display: flex;
-    gap: 128px;
+    gap: 200px;
 }
 
 .team-section-img-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 64px;
+    gap: 32px;
+}
+
+.team-section-img {
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+    transition: opacity 0.3s ease-in-out;
 }
 
 .team-section-img {
