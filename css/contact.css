@@ -11,7 +11,7 @@
 
 .contact-section-title {
     color: #AC1B11;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 500;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .contact-section-label {
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
@@ -55,14 +55,9 @@
     padding: 1rem 1rem;
     border: 1px #000000 solid;
     border-radius: 8px;
-    font-size: 18px;
-}
-
-textarea.contact-section-input {
+    font-size: 1.2rem;
     font-family: inherit;
-    font-size: inherit;   
-    resize: vertical;    
-    min-height: 120px;
+    font-size: inherit;     
 }
 
 .contact-section-button {
@@ -72,7 +67,7 @@ textarea.contact-section-input {
     border: none;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
@@ -106,13 +101,13 @@ textarea.contact-section-input {
 }
 
 .fa-whatsapp {
-    font-size: 50px; 
+    font-size: 3rem; 
     color: #AC1B11; 
     transition: transform 0.2s ease-in-out;
 }
 
 .fa-instagram {
-    font-size: 50px;
+    font-size: 3rem;
     color: #AC1B11;
     transition: transform 0.2s ease-in-out; 
 }
@@ -127,7 +122,7 @@ textarea.contact-section-input {
     }
 
     .contact-section-title {
-        font-size: 32px;
+        font-size: 2rem;
         text-align: center;
     }
 
@@ -150,11 +145,11 @@ textarea.contact-section-input {
 
     .contact-section-label,
     .contact-section-input {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .contact-section-button {
-        font-size: 20px;
+        font-size: 1.2rem;
     }
 
     .contact-section-form-icon {
@@ -163,6 +158,6 @@ textarea.contact-section-input {
 
     .fa-whatsapp,
     .fa-instagram {
-        font-size: 44px;
+        font-size: 2.8rem;
     }
 }

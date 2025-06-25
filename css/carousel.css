@@ -41,7 +41,7 @@
     border-radius: 9999px;
     cursor: pointer;
     border: none;
-    font-size: 24px;
+    font-size: 1.5rem;
     transition: background-color 0.3s ease-in-out;
     z-index: 10;
 }
@@ -72,7 +72,7 @@
     border-radius: 9999px;
     cursor: pointer;
     border: none;
-    font-size: 20px;
+    font-size: 1.4rem;
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -110,7 +110,7 @@
     }
 
     .carousel-nav-btn {
-        font-size: 18px;
+        font-size: 1.2rem;
         padding: 8px;
     }
     
@@ -123,7 +123,7 @@
     }
     
     .carousel-control-btn {
-        font-size: 16px;
+        font-size: 1rem;
         padding: 8px;
     }
 

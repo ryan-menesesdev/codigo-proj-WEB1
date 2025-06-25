@@ -14,7 +14,7 @@
 
 .team-section-title {
     color: #AC1B11;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 500;
 }
 
@@ -26,6 +26,7 @@
 .team-section-img-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 32px;
 }
 
@@ -48,7 +49,7 @@
 
 .team-section-name {
     color: #AC1B11;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 600;
 }
 
@@ -59,7 +60,7 @@
     }
 
     .team-section-title {
-        font-size: 32px;
+        font-size: 2rem;
         text-align: center;
     }
 
@@ -73,6 +74,6 @@
     }
 
     .team-section-name {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 }

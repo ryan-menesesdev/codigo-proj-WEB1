@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/back.css">
     <link rel="stylesheet" href="../css/register.css"> 
     <link rel="stylesheet" href="../css/footer.css"> 
+    <link rel="stylesheet" href="../css/header.css">
     <title>Registrar - Sinhá Bolos e Lanches</title>
 </head>
 <body>
@@ -20,6 +21,22 @@
                     <i class="fas fa-arrow-left" aria-hidden="true"></i>
                     <span>Voltar</span>
                 </a>
+
+                <div class="header-accessibility-container">
+                    <button id="header-accessibility-toggle-btn" class="header-dropdown" aria-label="Abrir menu de acessibilidade" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-universal-access"  aria-hidden="true"></i>
+                    </button>
+                    <div id="header-accessibility-menu" class="header-accessibility-menu">
+                        <div class="header-acessibility-content">
+                            <label for="font-size-control" class="header-acessibility-label">Tamanho da Fonte</label>
+                            <div id="font-size-control" class="header-acessibility-btn-container">
+                                <button id="font-decrease-btn" class="header-acessibility-btn" aria-label="Diminuir fonte">A-</button>
+                                <button id="font-reset-btn" class="header-acessibility-btn" aria-label="Resetar fonte">A</button>
+                                <button id="font-increase-btn" class="header-acessibility-btn" aria-label="Aumentar fonte">A+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <section class="register-section" aria-labelledby="register-main-title">
@@ -87,5 +104,6 @@
     </footer>
 
     <script src="../js/main.js" type="module"></script>
+    <script src="../js/dropdown.js" type="module"></script>
 </body>
 </html>

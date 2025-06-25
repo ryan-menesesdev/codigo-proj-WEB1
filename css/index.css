@@ -8,7 +8,7 @@
 
 .index-main-title {
     color: #AC1B11;
-    font-size: 38px;
+    font-size: 2.2rem;
     font-weight: 600;
     padding: 1rem 0rem;
     text-decoration-line: underline;
@@ -24,7 +24,6 @@
 .index-section-img {
     width: 100%;
     height: 35vh;
-    border: 2px solid #000000;
     border-radius: 8px;
     transition: opacity 0.3s ease-in-out;
     object-fit: cover;
@@ -46,7 +45,7 @@
     }
 
     .index-main-title {
-        font-size: 20px;
+        font-size: 1.5rem;
     }
 }
 

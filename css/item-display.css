@@ -28,18 +28,18 @@
 }
 
 .item-display-title {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
 .item-display-paragraph {
-    font-size: 18px;
+    font-size: 1.2rem;
 }
 
 .item-display-button {
     padding: 1rem 2rem;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 1.2rem;
     font-family: 'Poppins', sans-serif;
     border: none;
     border-radius: 8px;
@@ -77,15 +77,15 @@
     }
 
     .item-display-title {
-        font-size: 22px;
+        font-size: 1.3rem;
     }
 
     .item-display-paragraph {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .item-display-button {
         padding: 0.8rem 1.5rem;
-        font-size: 16px;
+        font-size: 1rem;
     }
 }

@@ -29,7 +29,7 @@ body {
 }
 
 .register-title {
-    font-size: 32px;
+    font-size: 2rem;
     color: #90170E;
     border-radius: 8px;
     font-weight: 700;
@@ -51,7 +51,7 @@ body {
 }
 
 .register-label {
-    font-size: 18px;
+    font-size: 1.2rem;
 }
 
 .register-input-container {
@@ -64,7 +64,7 @@ body {
     padding: 1rem 1.5rem;
     border: none;
     border-radius: 8px;
-    font-size: 18px;
+    font-size: 1.2rem;
 }
 
 .register-button {
@@ -75,7 +75,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
@@ -104,7 +104,7 @@ body {
     }
 
     .register-title {
-        font-size: 28px;
+        font-size: 1.6rem;
     }
 
     .register-form {
@@ -112,15 +112,15 @@ body {
     }
     
     .register-label {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .register-input {
-        font-size: 16px;
+        font-size: 1rem;
         padding: 0.8rem 1rem;
     }
 
     .register-button {
-        font-size: 20px;
+        font-size: 1.2rem;
     }
 }

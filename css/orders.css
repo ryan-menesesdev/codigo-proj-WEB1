@@ -8,7 +8,7 @@
 
 .orders-section-title {
     color: #AC1B11;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 600;
 }
 
@@ -38,13 +38,13 @@
 }
 
 .order-card-subtitle {
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #333;
 }
 
 .order-card-status {
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 700;
     padding: 0.3rem 0.8rem;
     border-radius: 12px;
@@ -68,12 +68,12 @@
 }
 
  .order-card-text {
-    font-size: 16px;
+    font-size: 1rem;
     color: #555;
 }
 
 .order-card-items-subtitle {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: #333;
@@ -98,7 +98,7 @@
     }
 
     .orders-section-title {
-        font-size: 28px;
+        font-size: 1.6rem;
         text-align: center;
     }
 
@@ -110,11 +110,11 @@
     }
 
     .order-card-subtitle {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .order-card-status {
-        font-size: 13px;
+        font-size: 0.8rem;
         padding: 0.25rem 0.75rem;
     }
 
@@ -130,10 +130,10 @@
     }
 
     .order-card-text {
-        font-size: 15px;
+        font-size: 1rem;
     }
 
     .order-card-items-subtitle {
-        font-size: 15px;
+        font-size: 1rem;
     }
 }

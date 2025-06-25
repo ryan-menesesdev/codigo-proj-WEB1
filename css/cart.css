@@ -8,7 +8,7 @@
 
 .cart-section-title {
     color: #AC1B11;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 500;
     padding: 2rem 0rem;
 }
@@ -51,7 +51,7 @@ ul.cart-section-container {
 
 .cart-section-name {
     color: #AC1B11;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
@@ -63,7 +63,7 @@ ul.cart-section-container {
 
 .cart-section-quantity,
 .cart-section-price {
-    font-size: 20px;  
+    font-size: 1.4rem;  
     font-weight: 700;  
     color: #333333; 
 }
@@ -92,7 +92,7 @@ ul.cart-section-container {
 }
 
 .cart-section-total {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
@@ -102,7 +102,7 @@ ul.cart-section-container {
     font-family: 'Poppins', sans-serif;
     padding: 1rem;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.2rem;
     border: none; 
     border-radius: 8px;
     cursor: pointer;
@@ -133,14 +133,14 @@ ul.cart-section-container {
 }
 
 .cart-section-select-label {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
 .cart-section-select {
     border: none;
     padding: 1rem;
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
@@ -176,14 +176,14 @@ ul.cart-section-container {
 }
 
 .modal-content h2 {
-    font-size: 22px;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #333;
     margin-bottom: 1rem;
 }
 
 .modal-content p {
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #555;
     margin-bottom: 2rem;
 }
@@ -198,7 +198,7 @@ ul.cart-section-container {
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
@@ -229,7 +229,7 @@ ul.cart-section-container {
     }
 
     .cart-section-title {
-        font-size: 32px;
+        font-size: 2rem;
         padding: 1rem 0;
     }
 
@@ -257,16 +257,16 @@ ul.cart-section-container {
     }
 
     .cart-section-name {
-        font-size: 20px;
+        font-size: 1.3rem;
     }
 
     .cart-section-quantity,
     .cart-section-price {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 
     .cart-section-total {
-        font-size: 22px;
+        font-size: 1.4rem;
     }
     
     .cart-section-payment {
@@ -276,7 +276,7 @@ ul.cart-section-container {
     }
 
     .cart-section-select-label {
-        font-size: 20px;
+        font-size: 1.3rem;
         text-align: center;
     }
     
@@ -285,6 +285,6 @@ ul.cart-section-container {
     }
 
     .cart-section-button-payment {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 }

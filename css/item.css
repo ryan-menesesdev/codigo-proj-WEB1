@@ -31,7 +31,7 @@
 
 .item-section-title {
     color: #AC1B11;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 500;
 }
 
@@ -94,13 +94,13 @@
 
 .item-section-name {
     color: #AC1B11;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 600;
     min-height: 58px;
 }
 
 .item-section-price {
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #333;
     font-weight: 500;
 }
@@ -117,7 +117,7 @@
     color: #ffffff;
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 700;
     cursor: pointer;
     white-space: nowrap;
@@ -140,7 +140,7 @@
     }
 
     .item-section-title {
-        font-size: 32px;
+        font-size: 2rem;
         text-align: center;
     }
 
@@ -156,12 +156,12 @@
     }
 
     .item-section-name {
-        font-size: 20px;
+        font-size: 1.3rem;
         min-height: 1px;
     }
 
     .item-section-price {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .item-section-add {
@@ -170,6 +170,6 @@
 
     .item-section-button {
         padding: 0.8rem 1rem;
-        font-size: 14px;
+        font-size: 0.9rem;
     }
 }

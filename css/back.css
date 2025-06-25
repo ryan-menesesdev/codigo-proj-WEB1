@@ -25,6 +25,7 @@ img {
 
 .top-container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 1rem;
 }
@@ -36,7 +37,7 @@ img {
     align-items: center;
     color: #FFFFFF;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 1.5rem;
     background-color: #90170E;
     padding: 1rem 1.5rem;
     border-radius: 8px;
@@ -53,7 +54,7 @@ img {
     }
 
     .top-link {
-        font-size: 16px;
+        font-size: 1rem;
         padding: 0.8rem 1rem;
         gap: 8px;
     }

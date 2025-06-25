@@ -15,7 +15,7 @@
 
 .payment-section-title {
     color: #AC1B11;
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
@@ -27,12 +27,12 @@
 
 #next-steps-title {
     color: #AC1B11;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 500;
 }
 
 .payment-section-text {
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 
 .payment-section-list {
@@ -49,17 +49,17 @@
     }
 
     .payment-section-title {
-        font-size: 28px;
+        font-size: 1.6rem;
         text-align: center;
     }
 
     #next-steps-title {
-        font-size: 24px;
+        font-size: 1.5rem;
         text-align: center;
     }
 
     .payment-section-text {
-        font-size: 18px;
+        font-size: 1.2rem;
         text-align: center;
     }
 

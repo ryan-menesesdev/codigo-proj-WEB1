@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/back.css">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/footer.css"> 
+    <link rel="stylesheet" href="../css/header.css">
     <title>Login - Sinhá Bolos e Lanches</title>
 </head>
 <body>
@@ -23,7 +24,24 @@
                     <i class="fas fa-arrow-left" aria-hidden="true"></i>
                     <span>Voltar</span>
                 </a>
+
                 <div class="register-container">
+                    <div class="header-accessibility-container">
+                        <button id="header-accessibility-toggle-btn" class="header-dropdown" aria-label="Abrir menu de acessibilidade" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-universal-access" aria-hidden="true"></i>
+                        </button>
+                        <div id="header-accessibility-menu" class="header-accessibility-menu">
+                            <div class="header-acessibility-content">
+                                <label for="font-size-control" class="header-acessibility-label">Tamanho da Fonte</label>
+                                <div id="font-size-control" class="header-acessibility-btn-container">
+                                    <button id="font-decrease-btn" class="header-acessibility-btn" aria-label="Diminuir fonte">A-</button>
+                                    <button id="font-reset-btn" class="header-acessibility-btn" aria-label="Resetar fonte">A</button>
+                                    <button id="font-increase-btn" class="header-acessibility-btn" aria-label="Aumentar fonte">A+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="register.html">
                         <button id="register-button" class="login-button">Registrar-se</button>
                     </a>
@@ -75,5 +93,6 @@
     </footer>
 
     <script src="../js/main.js" type="module"></script>
+    <script src="../js/dropdown.js"></script>
 </body>
 </html>
