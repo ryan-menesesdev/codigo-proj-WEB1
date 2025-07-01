@@ -568,6 +568,14 @@ if (registerFormEl) {
         }
         
         try {
+            const q = query(collection(db, "usuarios"), where("email", "==", email));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                alert('Este e-mail já está cadastrado!');
+                return; 
+            }
+            
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             await setDoc(doc(db, "usuarios", user.uid), { nome: name, email: email, telefone: phone, cpf: cpf });
